@@ -1,0 +1,37 @@
+
+(Tan4ous/stories/my.story)
+Scenario: check is enough bonuses for sale
+Examples:
+Given <user> has bought a <product>
+When <user> get sum of <points> or bonus
+Then sum is <result>
+
+|user|points|product|result|
+|Mr Jones|10|1|enough|
+|Mr Smeet|10|2|not_enough|
+|Ms Hugh|10|3|not_enough|
+
+Example: {user=Mr Jones, points=10, product=1, result=enough}
+Given Mr Jones has bought a 1
+Given Mr Jones is logged in
+Given Mr Jones has 10
+When Mr Jones get sum of 10 or bonus
+Then sum is enough
+
+Example: {user=Mr Smeet, points=10, product=2, result=not_enough}
+Given Mr Smeet has bought a 2
+Given Mr Smeet is logged in
+Given Mr Smeet has 10
+When Mr Smeet get sum of 10 or bonus
+Then sum is not_enough
+
+Example: {user=Ms Hugh, points=10, product=3, result=not_enough}
+Given Ms Hugh has bought a 3
+Given Ms Hugh is logged in
+Given Ms Hugh has 10
+When Ms Hugh get sum of 10 or bonus
+Then sum is not_enough (FAILED)
+(org.junit.ComparisonFailure: expected:<[not_]enough> but was:<[]enough>)
+
+
+

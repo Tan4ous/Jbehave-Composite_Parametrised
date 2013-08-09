@@ -1,0 +1,48 @@
+<div class="story">
+<h1></h1>
+<div class="path">Tan4ous/stories/my.story</div>
+<div class="scenario">
+<h2>Scenario: check is enough bonuses for sale</h2>
+<div class="examples">
+<h3>Examples:</h3>
+<div class="step">Given &lt;user&gt; has bought a &lt;product&gt;</div>
+<div class="step">When &lt;user&gt; get sum of &lt;points&gt; or bonus</div>
+<div class="step">Then sum is &lt;result&gt;</div>
+<table>
+<thead>
+<tr>
+<th>user</th><th>points</th><th>product</th><th>result</th></tr>
+</thead>
+<tbody>
+<tr>
+<td>Mr Jones</td><td>10</td><td>1</td><td>enough</td></tr>
+<tr>
+<td>Mr Smeet</td><td>10</td><td>2</td><td>not_enough</td></tr>
+<tr>
+<td>Ms Hugh</td><td>10</td><td>3</td><td>not_enough</td></tr>
+</tbody>
+</table>
+
+<h3 class="example">Example: {user=Mr Jones, points=10, product=1, result=enough}</h3>
+<div class="step successful">Given <span class="step parameter">Mr Jones</span> has bought a <span class="step parameter">1</span></div>
+<div class="step successful">Given <span class="step parameter">Mr Jones</span> is logged in</div>
+<div class="step successful">Given <span class="step parameter">Mr Jones</span> has <span class="step parameter">10</span></div>
+<div class="step successful">When <span class="step parameter">Mr Jones</span> get sum of <span class="step parameter">10</span> or bonus</div>
+<div class="step successful">Then sum is <span class="step parameter">enough</span></div>
+
+<h3 class="example">Example: {user=Mr Smeet, points=10, product=2, result=not_enough}</h3>
+<div class="step successful">Given <span class="step parameter">Mr Smeet</span> has bought a <span class="step parameter">2</span></div>
+<div class="step successful">Given <span class="step parameter">Mr Smeet</span> is logged in</div>
+<div class="step successful">Given <span class="step parameter">Mr Smeet</span> has <span class="step parameter">10</span></div>
+<div class="step successful">When <span class="step parameter">Mr Smeet</span> get sum of <span class="step parameter">10</span> or bonus</div>
+<div class="step successful">Then sum is <span class="step parameter">not_enough</span></div>
+
+<h3 class="example">Example: {user=Ms Hugh, points=10, product=3, result=not_enough}</h3>
+<div class="step successful">Given <span class="step parameter">Ms Hugh</span> has bought a <span class="step parameter">3</span></div>
+<div class="step successful">Given <span class="step parameter">Ms Hugh</span> is logged in</div>
+<div class="step successful">Given <span class="step parameter">Ms Hugh</span> has <span class="step parameter">10</span></div>
+<div class="step successful">When <span class="step parameter">Ms Hugh</span> get sum of <span class="step parameter">10</span> or bonus</div>
+<div class="step failed">Then sum is <span class="step parameter">not_enough</span> <span class="keyword failed">(FAILED)</span><br/><span class="message failed">org.junit.ComparisonFailure: expected:&lt;[not_]enough&gt; but was:&lt;[]enough&gt;</span></div>
+</div>
+</div>
+</div>
