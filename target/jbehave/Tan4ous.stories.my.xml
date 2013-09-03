@@ -1,5 +1,8 @@
 <story path="Tan4ous/stories/my.story" title="">
 <scenario keyword="Scenario:" title="check is enough bonuses for sale">
+<meta>
+<property keyword="@" name="first" value=""/>
+</meta>
 <examples keyword="Examples:">
 <step>Given &lt;user&gt; has bought a &lt;product&gt;</step>
 <step>When &lt;user&gt; get sum of &lt;points&gt; or bonus</step>
@@ -8,7 +11,7 @@
 <names><name>user</name><name>points</name><name>product</name><name>result</name></names>
 <values><value>Mr Jones</value><value>10</value><value>1</value><value>enough</value></values>
 <values><value>Mr Smeet</value><value>10</value><value>2</value><value>not_enough</value></values>
-<values><value>Ms Hugh</value><value>10</value><value>3</value><value>not_enough</value></values>
+<values><value>Ms Hugh</value><value>10</value><value>3</value><value>enough</value></values>
 </parameters>
 
 <example keyword="Example:">{user=Mr Jones, points=10, product=1, result=enough}</example>
@@ -25,12 +28,47 @@
 <step outcome="successful">When <parameter>Mr Smeet</parameter> get sum of <parameter>10</parameter> or bonus</step>
 <step outcome="successful">Then sum is <parameter>not_enough</parameter></step>
 
-<example keyword="Example:">{user=Ms Hugh, points=10, product=3, result=not_enough}</example>
+<example keyword="Example:">{user=Ms Hugh, points=10, product=3, result=enough}</example>
 <step outcome="successful">Given <parameter>Ms Hugh</parameter> has bought a <parameter>3</parameter></step>
 <step outcome="successful">Given <parameter>Ms Hugh</parameter> is logged in</step>
 <step outcome="successful">Given <parameter>Ms Hugh</parameter> has <parameter>10</parameter></step>
 <step outcome="successful">When <parameter>Ms Hugh</parameter> get sum of <parameter>10</parameter> or bonus</step>
-<step outcome="failed" keyword="FAILED">Then sum is <parameter>not_enough</parameter><failure>org.junit.ComparisonFailure: expected:&lt;[not_]enough&gt; but was:&lt;[]enough&gt;</failure></step>
+<step outcome="successful">Then sum is <parameter>enough</parameter></step>
+</examples>
+</scenario>
+<scenario keyword="Scenario:" title="check is bonuses">
+<meta>
+<property keyword="@" name="second" value=""/>
+</meta>
+<filter>-second -third</filter>
+</scenario>
+<scenario keyword="Scenario:" title="add new product in the basket">
+<meta>
+<property keyword="@" name="third" value=""/>
+</meta>
+<filter>-second -third</filter>
+</scenario>
+<scenario keyword="Scenario:" title="A scenario with filtering on examples">
+<meta>
+<property keyword="@" name="os" value=""/>
+</meta>
+<examples keyword="Examples:">
+<step>Given an operating system &lt;value&gt;</step>
+<parameters>
+<names><name>Meta:</name><name>value</name></names>
+<values><value>@os Linux</value><value>Ubuntu</value></values>
+<values><value>@os Unix</value><value>OS X</value></values>
+<values><value>@os Windows</value><value>XP</value></values>
+</parameters>
+
+<example keyword="Example:">{Meta:=@os Linux, value=Ubuntu}</example>
+<step outcome="successful">Given an operating system <parameter>Ubuntu</parameter></step>
+
+<example keyword="Example:">{Meta:=@os Unix, value=OS X}</example>
+<step outcome="successful">Given an operating system <parameter>OS X</parameter></step>
+
+<example keyword="Example:">{Meta:=@os Windows, value=XP}</example>
+<step outcome="successful">Given an operating system <parameter>XP</parameter></step>
 </examples>
 </scenario>
 </story>

@@ -23,7 +23,9 @@ import org.jbehave.core.steps.ParameterConverters;
 import org.jbehave.core.steps.ParameterConverters.DateConverter;
 import org.jbehave.core.steps.ParameterConverters.ExamplesTableConverter;
 import Tan4ous.steps.MySteps;
+import org.junit.Test;
 
+import static java.util.Arrays.asList;
 import static org.jbehave.core.io.CodeLocations.codeLocationFromClass;
 import static org.jbehave.core.reporters.Format.CONSOLE;
 import static org.jbehave.core.reporters.Format.HTML;
@@ -39,8 +41,9 @@ import static org.jbehave.core.reporters.Format.XML;
  * </p> 
  */
 public class MyStories extends JUnitStories {
-    
+
     public MyStories() {
+        // configuredEmbedder().useMetaFilters(asList("-second", "-third"));
         configuredEmbedder().embedderControls().doGenerateViewAfterStories(true).doIgnoreFailureInStories(true)
                 .doIgnoreFailureInView(true).useThreads(2).useStoryTimeoutInSecs(60);
     }
@@ -67,6 +70,7 @@ public class MyStories extends JUnitStories {
 
     @Override
     public InjectableStepsFactory stepsFactory() {
+
         return new InstanceStepsFactory(configuration(), new MySteps());
     }
 

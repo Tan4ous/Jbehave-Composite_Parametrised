@@ -9,6 +9,7 @@ public class MySteps {
 
     private String status;
     private Bonus bonus;
+    private int quantity;
     int sum = 0, b1;
 
     @Given("<user> is logged in")
@@ -42,6 +43,37 @@ public class MySteps {
     public void thenTheAlertStatusShouldBeresult(@Named("result") String stat) {
         assertEquals(stat, status);
     }
+
+    @Then("sum equal <result>")
+    public void equalresult(@Named("result") Double stat) {
+        assertEquals(stat, bonus.sum);
+    }
+
+    @Given("%user added new product in the basket")
+    @Alias("<user> added new product in the basket")
+    @Composite(steps = {
+            "Given <user> is logged in",
+    })
+    public void aComposite(@Named("user") String user) {
+
+    }
+
+    @When("sum of <already> or new product")
+    public void AddedQuantity(@Named("already") int already) {
+        quantity = already + 1;
+    }
+
+    @Then("quantity of product equal <result>")
+    public void thenTheAlertQuantityShouldBeresult(@Named("result") int stat) {
+        assertEquals(stat, quantity);
+    }
+
+    @Given("an operating system <value>")
+    public void OS(@Named("value") String os){
+
+    }
+
+
 
 
 

@@ -11,6 +11,10 @@
 <div class="path">Tan4ous/stories/my.story</div>
 <div class="scenario">
 <h2>Scenario: check is enough bonuses for sale</h2>
+<div class="meta">
+<div class="keyword">Meta:</div>
+<div class="property">@first </div>
+</div>
 <div class="examples">
 <h3>Examples:</h3>
 <div class="step">Given &lt;user&gt; has bought a &lt;product&gt;</div>
@@ -27,7 +31,7 @@
 <tr>
 <td>Mr Smeet</td><td>10</td><td>2</td><td>not_enough</td></tr>
 <tr>
-<td>Ms Hugh</td><td>10</td><td>3</td><td>not_enough</td></tr>
+<td>Ms Hugh</td><td>10</td><td>3</td><td>enough</td></tr>
 </tbody>
 </table>
 
@@ -45,12 +49,62 @@
 <div class="step successful">When <span class="step parameter">Mr Smeet</span> get sum of <span class="step parameter">10</span> or bonus</div>
 <div class="step successful">Then sum is <span class="step parameter">not_enough</span></div>
 
-<h3 class="example">Example: {user=Ms Hugh, points=10, product=3, result=not_enough}</h3>
+<h3 class="example">Example: {user=Ms Hugh, points=10, product=3, result=enough}</h3>
 <div class="step successful">Given <span class="step parameter">Ms Hugh</span> has bought a <span class="step parameter">3</span></div>
 <div class="step successful">Given <span class="step parameter">Ms Hugh</span> is logged in</div>
 <div class="step successful">Given <span class="step parameter">Ms Hugh</span> has <span class="step parameter">10</span></div>
 <div class="step successful">When <span class="step parameter">Ms Hugh</span> get sum of <span class="step parameter">10</span> or bonus</div>
-<div class="step failed">Then sum is <span class="step parameter">not_enough</span> <span class="keyword failed">(FAILED)</span><br/><span class="message failed">org.junit.ComparisonFailure: expected:&lt;[not_]enough&gt; but was:&lt;[]enough&gt;</span></div>
+<div class="step successful">Then sum is <span class="step parameter">enough</span></div>
+</div>
+</div>
+<div class="scenario">
+<h2>Scenario: check is bonuses</h2>
+<div class="meta">
+<div class="keyword">Meta:</div>
+<div class="property">@second </div>
+</div>
+<div class="filter">-second -third</div>
+</div>
+<div class="scenario">
+<h2>Scenario: add new product in the basket</h2>
+<div class="meta">
+<div class="keyword">Meta:</div>
+<div class="property">@third </div>
+</div>
+<div class="filter">-second -third</div>
+</div>
+<div class="scenario">
+<h2>Scenario: A scenario with filtering on examples</h2>
+<div class="meta">
+<div class="keyword">Meta:</div>
+<div class="property">@os </div>
+</div>
+<div class="examples">
+<h3>Examples:</h3>
+<div class="step">Given an operating system &lt;value&gt;</div>
+<table>
+<thead>
+<tr>
+<th>Meta:</th><th>value</th></tr>
+</thead>
+<tbody>
+<tr>
+<td>@os Linux</td><td>Ubuntu</td></tr>
+<tr>
+<td>@os Unix</td><td>OS X</td></tr>
+<tr>
+<td>@os Windows</td><td>XP</td></tr>
+</tbody>
+</table>
+
+<h3 class="example">Example: {Meta:=@os Linux, value=Ubuntu}</h3>
+<div class="step successful">Given an operating system <span class="step parameter">Ubuntu</span></div>
+
+<h3 class="example">Example: {Meta:=@os Unix, value=OS X}</h3>
+<div class="step successful">Given an operating system <span class="step parameter">OS X</span></div>
+
+<h3 class="example">Example: {Meta:=@os Windows, value=XP}</h3>
+<div class="step successful">Given an operating system <span class="step parameter">XP</span></div>
 </div>
 </div>
 </div>
